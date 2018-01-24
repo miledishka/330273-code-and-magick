@@ -1,7 +1,7 @@
 # Учебный проект «Код и Магия» [![Build status][travis-image]][travis-url]
 
 * Студент: [Юлия Родионова](https://up.htmlacademy.ru/javascript/12/user/330273).
-
+* Наставник: [Борис Ванюшин](https://htmlacademy.ru/profile/id62080).
 ---
 
 _Не удаляйте и не обращайте внимание на папки и файлы:_<br>
