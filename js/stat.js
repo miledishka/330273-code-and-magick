@@ -15,17 +15,17 @@ var CURRENT_PLAYER_COLOR = 'rgba(255, 0, 0, 1)';
 var CTX_SETTINGS = {
   font: '16px PT Mono',
   background: '#000000',
-  text_style: 'hanging',
-  shadow_background: 'rgba(0, 0, 0, 0.7)',
-  cloud_background: '#ffffff'
-}
+  textStyle: 'hanging',
+  shadowBackground: 'rgba(0, 0, 0, 0.7)',
+  cloudBackground: '#ffffff'
+};
 
-var renderCloud = function(ctx, x, y, color) {
+var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
 };
 
-var getMaxElement = function(collection) {
+var getMaxElement = function (collection) {
   var maxElement = collection[0];
 
   for (var i = 0; i < collection.length; i++) {
@@ -36,27 +36,27 @@ var getMaxElement = function(collection) {
   return maxElement;
 };
 
-var setBarColorByCurrentUser = function(ctx, name) {
-  if (name == CURRENT_PLAYER_NAME) {
+var setBarColorByCurrentUser = function (ctx, name) {
+  if (name === CURRENT_PLAYER_NAME) {
     ctx.fillStyle = CURRENT_PLAYER_COLOR;
   } else {
     ctx.fillStyle = 'rgba(0, 0, 255,' + Math.random(1) + ')';
   }
-}
+};
 
-var calculateBarHeight = function(time, maxTime) {
+var calculateBarHeight = function (time, maxTime) {
   return (BAR_HEIGHT * time) / maxTime;
-}
+};
 
-var printResultMessage = function(ctx) {
+var printResultMessage = function (ctx) {
   ctx.font = CTX_SETTINGS.font;
   ctx.fillStyle = CTX_SETTINGS.background;
-  ctx.textBaseline = CTX_SETTINGS.text_style;
+  ctx.textBaseline = CTX_SETTINGS.textStyle;
   ctx.fillText('Ура вы победили!', CLOUD_X + FONT_GAP, 30);
   ctx.fillText('Список результатов:', CLOUD_X + FONT_GAP, 50);
-}
+};
 
-var drawResultBars = function(ctx, names, times) {
+var drawResultBars = function (ctx, names, times) {
   var maxTime = getMaxElement(times);
 
   for (var i = 0; i < names.length; i++) {
@@ -69,11 +69,11 @@ var drawResultBars = function(ctx, names, times) {
     setBarColorByCurrentUser(ctx, names[i]);
     ctx.fillRect(x, y, BAR_WIDTH, calculateBarHeight(times[i], maxTime));
   }
-}
+};
 
-window.renderStatistics = function(ctx, names, times) {
-  renderCloud(ctx, CLOUD_SHADOW_X, CLOUD_SHADOW_Y, CTX_SETTINGS.shadow_background);
-  renderCloud(ctx, CLOUD_X, CLOUD_Y, CTX_SETTINGS.cloud_background);
+window.renderStatistics = function (ctx, names, times) {
+  renderCloud(ctx, CLOUD_SHADOW_X, CLOUD_SHADOW_Y, CTX_SETTINGS.shadowBackground);
+  renderCloud(ctx, CLOUD_X, CLOUD_Y, CTX_SETTINGS.cloudBackground);
   printResultMessage(ctx);
   drawResultBars(ctx, names, times);
 };
