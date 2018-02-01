@@ -7,27 +7,18 @@ var WIZARD_COATCOLOR = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100
 var WIZARD_EYESCOLOR = ['black', 'red', 'blue', 'green', 'yellow'];
 var WIZARDS_COUNT = 4;
 
+var getRandomElement = function (arrayOfData) {
+  var elementIndex = getRandomIndexInArray(arrayOfData);
+
+  return arrayOfData[elementIndex];
+};
+
 var getRandomIndexInArray = function (items) {
   return Math.floor(Math.random() * items.length);
 };
 
 var wizardName = function () {
-  var wizardNameIndex = getRandomIndexInArray(WIZARD_NAMES);
-  var wizardSurnameIndex = getRandomIndexInArray(WIZARD_SURNAMES);
-
-  return WIZARD_NAMES[wizardNameIndex] + ' ' + WIZARD_SURNAMES[wizardSurnameIndex];
-};
-
-var wizardCoatColor = function () {
-  var wizardCoatcolorIndex = getRandomIndexInArray(WIZARD_COATCOLOR);
-
-  return WIZARD_COATCOLOR[wizardCoatcolorIndex];
-};
-
-var wizardEyesColor = function () {
-  var wizardEyescolorIndex = getRandomIndexInArray(WIZARD_EYESCOLOR);
-
-  return WIZARD_EYESCOLOR[wizardEyescolorIndex];
+  return getRandomElement(WIZARD_NAMES) + ' ' + getRandomElement(WIZARD_SURNAMES);
 };
 
 var renderWizard = function (wizard) {
@@ -45,8 +36,8 @@ var wizards = [];
 for (i = 0; i < WIZARDS_COUNT; i++) {
   wizards.push({
     name: wizardName(),
-    coatColor: wizardCoatColor(),
-    eyesColor: wizardEyesColor()
+    coatColor: getRandomElement(WIZARD_COATCOLOR),
+    eyesColor: getRandomElement(WIZARD_EYESCOLOR)
   });
 }
 
