@@ -1,8 +1,6 @@
 'use strict';
 
 (function () {
-  var userPic = document.querySelector('.setup-user-pic');
-
   var onMouseDownUserPicHandler = function (evt) {
     evt.preventDefault();
 
@@ -39,5 +37,6 @@
     document.addEventListener('mouseup', onMouseUp);
   };
 
+  var userPic = document.querySelector('.setup-user-pic');
   userPic.addEventListener('mousedown', onMouseDownUserPicHandler);
 })();
