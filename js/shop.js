@@ -14,19 +14,19 @@
   };
 
   var artifactsDragEnterHandler = function (evt) {
-    evt.target.style.border = '2px dashed red';
+    evt.target.style.outline = '2px dashed red';
     evt.target.style.backgroundColor = 'yellow';
     evt.preventDefault();
   };
 
   var artifactsDragLeaveHandler = function (evt) {
-    evt.target.style.border = '';
+    evt.target.style.outline = '';
     evt.target.style.backgroundColor = '';
     evt.preventDefault();
   };
 
   var artifactsDropHandler = function (evt) {
-    evt.target.style.border = '';
+    evt.target.style.outline = '';
     evt.target.style.backgroundColor = '';
     evt.target.appendChild(draggedItem);
     evt.preventDefault();

@@ -11,6 +11,7 @@
 
     var onMouseMove = function (moveEvt) {
       moveEvt.preventDefault();
+      window.dialogDraggable = true;
 
       var shift = {
         x: startCoords.x - moveEvt.clientX,
@@ -28,6 +29,7 @@
 
     var onMouseUp = function (upEvt) {
       upEvt.preventDefault();
+      window.dialogDraggable = false;
 
       document.removeEventListener('mousemove', onMouseMove);
       document.removeEventListener('mouseup', onMouseUp);
@@ -37,6 +39,16 @@
     document.addEventListener('mouseup', onMouseUp);
   };
 
-  var userPic = document.querySelector('.setup-user-pic');
+  var onClickUserPicHandler = function (evt) {
+    if (window.dialogDraggable) {
+      evt.preventDefault();
+    }
+  };
+
+  window.dialogDraggable = false;
+  var userPic = document.querySelector('.setup-user-pic').parentElement;
+  var userPicInput = document.querySelector('input[name=avatar]');
+
   userPic.addEventListener('mousedown', onMouseDownUserPicHandler);
+  userPicInput.addEventListener('onClick', onClickUserPicHandler);
 })();
