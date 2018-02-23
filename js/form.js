@@ -29,6 +29,17 @@
     }
   };
 
+  var onLoadHandler = function () {
+    window.setup.classList.add('hidden');
+  };
+
+  var form = window.setup.querySelector('.setup-wizard-form');
+  var onSubmitHandler = function (evt) {
+    evt.preventDefault();
+    window.backend.save(new FormData(form), onLoadHandler, window.errorHandler);
+  };
+
+  form.addEventListener('submit', onSubmitHandler);
   window.userNameInput.addEventListener('invalid', nameInputInvalid);
   window.userNameInput.addEventListener('input', nameInputClick);
 })();
