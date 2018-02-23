@@ -1,6 +1,8 @@
 'use strict';
 
 (function () {
+  var WIZARDS_COUNT = 4;
+
   var renderWizard = function (wizard) {
     var similarWizardTemplate = document.querySelector('#similar-wizard-template').content;
     var wizardElement = similarWizardTemplate.cloneNode(true);
@@ -14,7 +16,7 @@
 
   var onLoadHandler = function (wizards) {
     var fragment = document.createDocumentFragment();
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < WIZARDS_COUNT; i++) {
       var wizardIndex = window.getRandomIndexInArray(wizards);
       fragment.appendChild(renderWizard(wizards.splice(wizardIndex, 1)[0]));
     }
