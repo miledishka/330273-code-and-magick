@@ -6,12 +6,12 @@
   var HIDDEN = 'hidden';
 
   window.getRandomElement = function (arrayOfData) {
-    var elementIndex = getRandomIndexInArray(arrayOfData);
+    var elementIndex = window.getRandomIndexInArray(arrayOfData);
 
     return arrayOfData[elementIndex];
   };
 
-  var getRandomIndexInArray = function (items) {
+  window.getRandomIndexInArray = function (items) {
     return Math.floor(Math.random() * items.length);
   };
 
