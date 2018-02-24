@@ -16,10 +16,12 @@
 
   var onLoadHandler = function (wizards) {
     var fragment = document.createDocumentFragment();
+
     for (var i = 0; i < WIZARDS_COUNT; i++) {
       var wizardIndex = window.getRandomIndexInArray(wizards);
-      fragment.appendChild(renderWizard(wizards.splice(wizardIndex, 1)[0]));
+      fragment.appendChild(renderWizard(wizards.slice().splice(wizardIndex, 1)[0]));
     }
+
     window.setup.querySelector('.setup-similar-list').appendChild(fragment);
     window.setup.querySelector('.setup-similar').classList.remove('hidden');
   };

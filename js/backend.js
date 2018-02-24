@@ -18,9 +18,11 @@
         onError('Статус ответа: ' + xhr.status + ' ' + xhr.statusText);
       }
     };
+
     var onErrorHandler = function () {
       onError('Произошла ошибка соединения');
     };
+
     var onTimeoutHandler = function () {
       onError('Запрос не успел выполниться за ' + xhr.timeout + 'мс');
     };
@@ -40,22 +42,26 @@
     var onLoadHandler = function () {
       onLoad(xhr.response);
     };
+
     var onErrorHandler = function () {
       onError('Произошла ошибка соединения');
     };
+
+    var onTimeoutHandler = function () {
+      onError('Запрос не успел выполниться за ' + xhr.timeout + 'мс');
+    };
+
     xhr.addEventListener('error', onErrorHandler);
     xhr.addEventListener('load', onLoadHandler);
+    xhr.addEventListener('timeout', onTimeoutHandler);
+
     xhr.open('POST', SAVE_URL);
     xhr.send(data);
   };
 
   window.errorHandler = function (errorMessage) {
     var node = document.createElement('div');
-    node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
-    node.style.position = 'absolute';
-    node.style.left = 0;
-    node.style.right = 0;
-    node.style.fontSize = '30px';
+    node.classList.add('errors');
     node.textContent = errorMessage;
     document.body.insertAdjacentElement('afterbegin', node);
   };
